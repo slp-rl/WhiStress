@@ -6,7 +6,11 @@ The official repo of
 
 The model is built on top of the [`whisper-small.en`](https://huggingface.co/openai/whisper-small.en) variant, and enhanced with a lightweight decoder-based classifier that predicts the **stress label for each token**.
 
-Checkout our [project's page](https://pages.cs.huji.ac.il/adiyoss-lab/whistress/) for more information.
+<p align="center">
+      🤗 <a href="https://huggingface.co/slprl/WhiStress" target="_blank">WhiStress Model </a><br> 
+      🤗 <a href="https://huggingface.co/datasets/slprl/TinyStress-15K" target="_blank">TinyStress-15K Dataset</a> | 🤗 <a href="https://huggingface.co/spaces/slprl/WhiStress-Demo" target="_blank">Demo </a><br>
+     | 🌐 <a href="https://pages.cs.huji.ac.il/adiyoss-lab/whistress/" target="_blank">Project</a> | 📃 <a href="https://arxiv.org/abs/2505.19103" target="_blank">Paper</a>
+</p>
 
 ## 🔧 Installation
 
@@ -84,10 +88,48 @@ python app_ui.py
 
 This will launch a browser-based UI for trying out the model interactively on your own audio.
 
-## Training
+## 🏋️‍♀️ Training
 
-Coming soon...
+To train **WhiStress** on a supported dataset (e.g., TinyStress-15K), use the following instructions.
 
+### 🔧 Environment Setup
+
+First, activate your virtual environment and optionally export your `WAND_API_KEY` if you're using Weights & Biases for logging:
+```bash
+export WAND_API_KEY="your_wandb_key"
+```
+
+To launch training, run:
+```bash
+python -m whistress.training.train \
+  --dataset_path path_to_where_preprocessed_ds_will_be_stored \
+  --transcription_column_name transcription \
+  --dataset_train tinyStress-15K \
+  --dataset_eval tinyStress-15K \
+  --is_train true
+```
+
+This will:
+
+- Preprocess the TinyStress-15K dataset and store it at the location specified by `--dataset_path`.
+- Save the final training checkpoint to the `training_results` directory (created automatically if `--output_path` is not specified).
+
+Expected structure:
+
+```
+whistress/
+├── training/
+│   └── train.py
+│   └── training_results
+│   │   └── ...
+│   └── ...
+├── ...
+README.md
+...
+```
+
+Note: You can customize your training run using additional CLI arguments.
+Check out `train.py` for the full list of available options and their descriptions.
 
 ## Citation
 
