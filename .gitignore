@@ -1,4 +1,9 @@
-.venv
+.venv*
+.vscode
 .DS_Store
 *__pycache__*
 whistress/weights/*
+whistress/data/*
+whistress/training/*.txt
+whistress/training/*.sh
+whistress/training/training_results/*

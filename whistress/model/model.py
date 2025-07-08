@@ -87,11 +87,10 @@ class WhiStress(PreTrainedModel):
         super().to(device)
         return self
 
-    def load_model(self, save_dir=None):
+    def load_model(self, save_dir=None, device="cuda" if torch.cuda.is_available() else "cpu"):
         # load only the classifier and extra decoder layer (saved locally)
         if save_dir is not None:
             print('loading model from:', save_dir)
-            device = "cuda" if torch.cuda.is_available() else "cpu"
             self.classifier.load_state_dict(
                 torch.load(
                     os.path.join(save_dir, "classifier.pt"),

@@ -6,7 +6,7 @@ from whistress import WhiStressInferenceClient
 if __name__ == "__main__":
     
     # Load your dataset, replace with the actual dataset you are using
-    dataset_name = "slp-rl/StressTest"  # Example dataset name, change as needed
+    dataset_name = "slprl/StressTest"  # Example dataset name, change as needed
     dataset = load_dataset(dataset_name)
     split_name = 'test'
 

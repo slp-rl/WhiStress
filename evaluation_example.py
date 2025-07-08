@@ -32,7 +32,7 @@ def compute_prf_metrics(predictions, references, average="binary"):
 
 def calculate_metrics_on_dataset(dataset):
     """
-    Sample structure example for slp-rl/StressTest dataset:
+    Sample structure example for slprl/StressTest dataset:
     # {'transcription_id': '98dd4a46-6b59-4817-befc-e35d548465c7',
     #  'transcription': 'You chose to do this?',
     #  'description': 'You voluntarily do this without being forced?',
@@ -79,7 +79,7 @@ if __name__ == "__main__":
     from datasets import load_dataset
     import json
     # Load your dataset, replace with the actual dataset you are using
-    dataset_name = "slp-rl/StressTest"  # Example dataset name, change as needed
+    dataset_name = "slprl/StressTest"  # Example dataset name, change as needed
     dataset = load_dataset(dataset_name)
     split_name = 'test' 
     print(f"Evaluating WhiStress on {dataset_name} for split {split_name}...")
