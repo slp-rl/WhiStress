@@ -5,6 +5,7 @@ import numpy as np
 import os
 import json
 
+
 class WhiStressTrainer(Seq2SeqTrainer):
     """
     Custom trainer extending Seq2SeqTrainer for speech emphasis detection.
@@ -99,11 +100,6 @@ class WhiStressTrainer(Seq2SeqTrainer):
             with open(os.path.join(output_dir, "training_args.json"), "w") as file:
                 json.dump(training_args.to_dict(), file)
             
-        return
-    # How to later load:
-    # self.model.classifier.load_state_dict(torch.load(os.path.join(output_dir, "classifier.pt"), weights_only=True))
-    # self.model.additional_decoder_block.load_state_dict(torch.load(os.path.join(output_dir, "additional_decoder_block.pt"), weights_only=True))
-
     def evaluate(self, eval_dataset=None, ignore_keys=None, metric_key_prefix="eval", dataset_name=''):
         """
         Evaluate model at token level on the evaluation dataset.
